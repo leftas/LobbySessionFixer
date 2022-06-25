@@ -35,7 +35,7 @@ jobs:
       - name: checkout hl2sdk-csgo
         uses: actions/checkout@v2
         with:
-          path: hl2sdk-csgo
+          path: hl2sdk
           repository: alliedmodders/hl2sdk
           ref: csgo
       
@@ -109,7 +109,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          python ../configure.py --enable-optimize --hl2sdk-root ${{github.workspace}} --mms-path ${{github.workspace}}/metamod-source --sm-path ${{github.workspace}}/sourcemod
+          python ../configure.py --enable-optimize --hl2sdk-root=${{github.workspace}} --mms-path=${{github.workspace}}/metamod-source --sm-path=${{github.workspace}}/sourcemod
           ambuild
 
       - name: Upload artifacts
