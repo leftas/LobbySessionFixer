@@ -178,7 +178,7 @@ bool LSF::SDK_OnLoad(char *error, size_t maxlength, bool late)
 	
 	if(*(uint8_t*)pPatch != 0xE8)
 	{
-		snprintf(error, maxlength, "Found not what they expected.");
+		snprintf(error, maxlength, "Found not what they expected.%d",*(uint8_t*)pPatch);
 		
 		return false;
 	}
