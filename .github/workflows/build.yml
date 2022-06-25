@@ -1,4 +1,4 @@
-name: Build PTaH
+name: Build LobbySessionFixer
 on: 
   push:
     branches:
@@ -30,12 +30,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          path: ptah
+          path: LobbySessionFixer
 
       - name: checkout hl2sdk-csgo
         uses: actions/checkout@v2
         with:
-          path: hl2sdk
+          path: hl2sdk-csgo
           repository: alliedmodders/hl2sdk
           ref: csgo
       
@@ -105,17 +105,17 @@ jobs:
           )
 
       - name: Build
-        working-directory: ptah
+        working-directory: LobbySessionFixer
         run: |
           mkdir build
           cd build
-          python ../configure.py --enable-optimize --hl2sdk-root=${{github.workspace}} --mms-path=${{github.workspace}}/metamod-source --sm-path=${{github.workspace}}/sourcemod
+          python ../configure.py --enable-optimize --sdks=csgo --hl2sdk-root=${{github.workspace}} --mms-path=${{github.workspace}}/metamod-source --sm-path=${{github.workspace}}/sourcemod
           ambuild
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.os }}-${{ matrix.compiler_cc }}
-          path: ${{github.workspace}}/ptah/build/package
+          path: ${{github.workspace}}/LobbySessionFixer/build/package
 
           
