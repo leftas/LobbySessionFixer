@@ -31,6 +31,11 @@ CopyFiles('', 'addons/sourcemod/gamedata',
   [ 'LobbySessionFixer.txt' ]
 )
 
+# AutoLoad files
+CopyFiles('', 'addons/sourcemod/extensions',
+  [ 'LobbySessionFixer.autoload' ]
+)
+
 # Copy binaries.
 for cxx_task in Extension.extensions:
   builder.AddCopy(cxx_task.binary, folder_map['addons/sourcemod/extensions'])
