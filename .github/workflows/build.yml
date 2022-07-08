@@ -117,5 +117,12 @@ jobs:
         with:
           name: ${{ matrix.os }}-${{ matrix.compiler_cc }}
           path: ${{github.workspace}}/LobbySessionFixer/build/package
+      
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release 1.0.${{ github.run_number }}
+          body: ${{ github.event.head_commit.message }}
+          tag: 1.0.${{ github.run_number }}
+          files: ${{github.workspace}}/LobbySessionFixer/build/package
 
-          
