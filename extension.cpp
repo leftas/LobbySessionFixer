@@ -173,7 +173,7 @@ bool LSF::SDK_OnLoad(char *error, size_t maxlength, bool late)
 #if defined(WIN32)
 	intptr_t pPatch = reinterpret_cast<intptr_t>(addr) + 0x80B;
 #else
-	intptr_t pPatch = reinterpret_cast<intptr_t>(addr) + 0xDE3;
+	intptr_t pPatch = reinterpret_cast<intptr_t>(addr) + 0xCD3;
 #endif
 	
 	if(*(uint8_t*)pPatch != 0xE8)
